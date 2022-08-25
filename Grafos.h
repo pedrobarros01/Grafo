@@ -101,6 +101,17 @@ int removeEdges(Grafo *gf, int origin, int destiny, int isDigraph){
     return 1;
 }
 
+void depthSearchAux(Grafo *gf, int verticeInitial, int *vectVisited, int cont){
+    int i;
+    vectVisited[verticeInitial] = cont;
+    for(i =0; i < gf->grade[verticeInitial]; i++){
+        if(!vectVisited[gf->edges[verticeInitial][i]]){
+            depthSearchAux(gf, gf->edges[verticeInitial][i], vectVisited, cont + 1);        
+        }
+    }
+
+}
+
 void depthSearch(Grafo *gf, int verticeInitial, int *vectVisited){
 /*
 gf -> grafo
@@ -108,6 +119,11 @@ verticeInitial -> vertice inicial para a busca
 vectVisited -> vetor de resposta da busca, mesmo numero de vertice, marco a ordem de visita
 
 */
+int i, cont = 1;
+for(i=0; i<gf->numVertices; i++){
+    vectVisited[i] = 0;
+}
+depthSearchAux(gf, verticeInitial, vectVisited, cont);
 }
 
 

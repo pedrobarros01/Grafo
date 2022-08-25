@@ -14,7 +14,10 @@ int main(){
     insertEdges(gf, 4, 1, isDigraph, 0);
     int vectVisited[5];
     depthSearch(gf, 0, vectVisited);
-
+    int i;
+    for(i=0; i < gf->numVertices; i++){
+        printf("%d\n", vectVisited[i]);
+    }
     releaseGrafo(gf);
     
 

@@ -100,4 +100,15 @@ int removeEdges(Grafo *gf, int origin, int destiny, int isDigraph){
     }
     return 1;
 }
+
+void depthSearch(Grafo *gf, int verticeInitial, int *vectVisited){
+/*
+gf -> grafo
+verticeInitial -> vertice inicial para a busca
+vectVisited -> vetor de resposta da busca, mesmo numero de vertice, marco a ordem de visita
+
+*/
+}
+
+
 #endif

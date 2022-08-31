@@ -1,6 +1,7 @@
 #ifndef GRAFOS_H
 #define GRAFOS_H
 #include<stdlib.h>
+#include<stdbool.h>
 typedef struct Grafo {
     int isWeighted;
     int numVertices;
@@ -126,5 +127,33 @@ for(i=0; i<gf->numVertices; i++){
 depthSearchAux(gf, verticeInitial, vectVisited, cont);
 }
 
+
+void searchSenaiAux(Grafo *gf, int *vectVisited, int verticeAtual, int indiceVect, bool* statusVisited){
+int i, j;
+statusVisited[verticeAtual] = true;
+vectVisited[verticeAtual] = verticeAtual;
+
+for(i=0; i < gf->grade[verticeAtual]; i++){
+    printf("caminho antigo: %d\n", verticeAtual);
+    int edge = gf->edges[verticeAtual][i];
+    if(!statusVisited[edge]){  
+        printf("caminho atual: %d\n", edge); 
+        verticeAtual = edge;
+        searchSenaiAux(gf, vectVisited, verticeAtual, indiceVect + 1, statusVisited);
+    }
+    
+    
+}
+}
+void searchSenai(Grafo *gf, int verticeInicial, int *vectVisited){
+    int i, cont = 0;
+    bool statusVisited[5];
+
+    for(i=0; i < gf->numVertices; i++){
+        vectVisited[i] = 0;
+        statusVisited[i] = false;
+    }
+    searchSenaiAux(gf, vectVisited, verticeInicial, cont, statusVisited);
+}
 
 #endif

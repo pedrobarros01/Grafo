@@ -2,18 +2,17 @@
 #include<stdlib.h>
 #include "Grafos.h"
 int main(){
-    int isDigraph = 1;
+    int isDigraph = 0;
     Grafo *gf;
     gf = createGrafo(5, 5, 0);
     insertEdges(gf, 0, 1, isDigraph, 0);
-    insertEdges(gf, 1, 3, isDigraph, 0);
+    insertEdges(gf, 0, 4, isDigraph, 0);
     insertEdges(gf, 1, 2, isDigraph, 0);
-    insertEdges(gf, 2, 4, isDigraph, 0);
-    insertEdges(gf, 3, 0, isDigraph, 0);
-    insertEdges(gf, 3, 4, isDigraph, 0);
-    insertEdges(gf, 4, 1, isDigraph, 0);
+    insertEdges(gf, 1, 3, isDigraph, 0);
+    insertEdges(gf, 1, 4, isDigraph, 0);
+    insertEdges(gf, 2, 3, isDigraph, 0);
     int vectVisited[5];
-    depthSearch(gf, 0, vectVisited);
+    searchSenai(gf, 0, vectVisited);
     int i;
     for(i=0; i < gf->numVertices; i++){
         printf("%d\n", vectVisited[i]);
